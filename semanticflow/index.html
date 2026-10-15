@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/WIS.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Jian Jin, Shangbing Gao, Zhenyong Fu, Jian Yang</span>
+                </div>
+
+
+                  <div class="is-size-6 publication-authors">
+                    <span class="author-block"> </span>
+                  </div>
+
+                  <div class="is-size-3 publication-authors">
+                    <span class="author-block">IEEE Transactions on Multimedia</span>
+
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href='./unicanvas_ijcv.pdf' target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<!-- Teaser Section with Image and Title -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Insert Image -->
+      <img src="pics/teaser.png" alt="Teaser Image" width="1200px">
+      <!-- Insert Title -->
+      <h2 class="subtitle has-text-left" style="font-size: 13px;">
+        Previous customized generation methods inject customized information into the denoising backbone across all denoising steps 
+        and model layers (i.e., "full injection"), leading to an additional reduction in editability. SInCE effectively restores editability 
+        while preserving key identifying features of the concept, harmonizing concept fidelity and concept editability in customized generation.
+      </h2>
+    </div>
+  </div> 
+</section>
+<!-- End teaser section with image and title -->
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Customized text-to-image generation aims to render user-specified concepts into novel contexts as instructed by textual prompts.
+            However, it suffers from an inherent trade-off between concept fidelity and editability, i.e., between the precise rendition of the customized concept and the faithful expression of the contextual content.
+            In this paper, we exploit the nature of the diffusion model that handles different image content at varying denoising steps and model layers for fidelity–editability harmonization.
+            Our initial analysis reveals that contextual content has narrow and consistent trigger intervals, where skipping the injection of customized elements into the denoising model effectively restores editability and mitigates overfitting.
+            Leveraging the insights above, we propose Shrinking Injection of Customized Element (SInCE), a novel "subtractive" framework.
+            In the fine-tuning, SInCE encapsulates all customized elements into a plug-and-play module using an adversarial tuning strategy.
+            Besides, it modulates the trigger intervals of custom concept to better disentangle them from the intervals of contextual content.
+            At inference, customized information is injected into the denoising model only outside the trigger interval of contextual content. 
+            The disentanglement between the trigger intervals of customized and contextual content enables SInCE to effectively restore editability without degrading concept fidelity.
+            Extensive experiments validate the effectiveness of SInCE in harmonizing the fidelity–editability trade-off.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Paper poster -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+        
+      <table width="800" border="0">
+        <tbody>
+          <tr>
+            <td colspan="3">
+              <p>
+                we propose Shrinking
+                Injection of Customized Element (SInCE), a novel subtractive
+                framework, to address the inherent fidelity–editability tradeoff
+                in customized generation. The core idea of SInCE is
+                to exploit the temporal and spatial disentanglement between
+                the trigger intervals of different image content. During finetuning,
+                SInCE encapsulates all customized elements into a
+                compact and plug-and-play module, enabling flexible control
+                over the selective injection of customized information at
+                inference. Besides, SInCE can modulate the trigger intervals
+                of customized concept at fine-tuning to better disentangle them
+                from the intervals of contextual content. At inference, SInCE
+                skips injecting customized information at the trigger interval
+                of contextual content to restore its normal expression, while
+                injecting customized information in the remaining intervals
+                is sufficient to trigger concept generation without degrading
+                fidelity. Therefore, SInCE can restore contextual content while
+                preserving high concept fidelity.
+              </p>
+            </td>
+          </tr>
+            <td colspan="3" style="text-align: center;">
+              <img src="pics/method.png" alt="" width="1200" />
+            <h2 class="subtitle has-text-left" style="font-size: 13px;">
+              <p>
+              An overview of the proposed SINCE. In the fine-tuning stage, SINCE encapsulates all customized elements into a compact, 
+              plug-and-play module $\Phi_c$. SINCE can also modulate the custom trigger interval $T_c$ by adjusting the injection interval of $f_{fuse}$. 
+              At inference, customized information contained in $f_c$ is injected into $\epsilon_\theta$ only outside the contextual trigger interval $T_e$.
+              </p>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      
+      </div>
+      </div>
+  </section>
+<!--End paper poster -->
+        
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Comparisons</h2>
+          <div class="content has-text-justified">
+            <td colspan="3">
+              <p style="margin-top: -12px;">
+              </p>
+            </td>
+  <!-- </td> -->
+          <tr>
+            <td colspan="3" style="text-align: center; padding-bottom: 30px;">
+              <img src="pics/res1.png" alt="" width="1000" />
+              <h2 class="subtitle has-text-center" style="font-size: 15px; text-align: center;">
+                Visual comparison with optimization-based method. Each generation case contains one or more types of contextual content. Our method shows clear advantages over the baselines in
+                faithfully adhering to the prompt while preserving the key concept features. For instance, SInCE successfully changes the concept’s material without altering
+                its geometric structure.
+              </h2>
+            </td>
+          </tr>
+          
+          <tr>
+            <td colspan="3" style="text-align: center; padding-bottom: 30px;">
+              <!-- Ensure image is centered with display block and margin auto -->
+              <img src="pics/res2.png" alt="" width="1000" style="display: block; margin: 0 auto;" />
+              <!-- Ensure title is centered -->
+              <h2 class="subtitle has-text-center" style="font-size: 15px; text-align: center;">
+                Visual comparison with finetuning-free methods. SInCE outperforms baselines in balancing the fidelity–editability trade-off, i.e., achieving strong
+                prompt adherence while preserving key concept features.
+              </h2>
+            </td>
+          </tr>
+            
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{jin2026less,
+        title={Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation},
+        author={Jin, Jian and Shangbing, Gao and Fu, Zhenyong and Yang, Jian},
+        journal={IEEE Transactions on Multimedia},
+        pages={1--25},
+        year={2026}
+      }</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column custom-width">
+          <!-- <h2 class="title is-3"></h2> -->
+          <div class="content has-text-justified">
+  <p>
+    <a name="ref-ebsynth" id="ref-ebsynth"></a>
+    <!-- [6] Gwanghyun Kim, Taesung Kwon, and Jong Chul Ye. Diffusionclip: Text-guided diffusion models for robust image manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022. -->
+  </p>
+  </div>
+        </div>
+      </div>
+    </div>  
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const videoWrappers = document.querySelectorAll('.video-wrapper');
+      
+        videoWrappers.forEach(wrapper => {
+          const defaultVideo = wrapper.querySelector('.default-video');
+          const aspectRatio = defaultVideo.videoWidth / defaultVideo.videoHeight;
+          const height = wrapper.offsetWidth / aspectRatio;
+      
+          wrapper.style.height = `${height}px`;
+      
+          wrapper.addEventListener('mouseenter', () => {
+            defaultVideo.pause();
+            hoverVideo.play();
+          });
+      
+          wrapper.addEventListener('mouseleave', () => {
+            defaultVideo.play();
+            hoverVideo.pause();
+          });
+        });
+      }); 
+      $(document).ready(function() {
+        var carouselItems = $('.carousel .item');
+        var numItems = carouselItems.length;
+        var numVideos = 5;
+        var currentIndex = 0;
+    
+        $('.carousel').on('click', function() {
+          currentIndex++;
+          if (currentIndex + numVideos <= numItems) {
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          } else {
+            currentIndex = 0;
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          }
+        });
+    
+        carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+      });
+    </script>
+  </body>
+  </html>
