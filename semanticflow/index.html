@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation</title>
+  <title>Toward Semantically-Consistent Tuning-Free Customization for Rectified Flow Transformers</title>
   <link rel="icon" type="image/x-icon" href="static/images/WIS.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -106,9 +106,8 @@
       <img src="pics/teaser.png" alt="Teaser Image" width="1200px">
       <!-- Insert Title -->
       <h2 class="subtitle has-text-left" style="font-size: 13px;">
-        Previous customized generation methods inject customized information into the denoising backbone across all denoising steps 
-        and model layers (i.e., "full injection"), leading to an additional reduction in editability. SInCE effectively restores editability 
-        while preserving key identifying features of the concept, harmonizing concept fidelity and concept editability in customized generation.
+        Semantically-consistent customization requires the generated images to exhibit both visual consistency to the key identifying features of the subject references and textual consistency to the prompt.
+        SemanticFlow significantly enhances visual and textual consistency through explicit semantic control, achieving semantic consistency in tuning-free customization.
       </h2>
     </div>
   </div> 
@@ -124,16 +123,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Customized text-to-image generation aims to render user-specified concepts into novel contexts as instructed by textual prompts.
-            However, it suffers from an inherent trade-off between concept fidelity and editability, i.e., between the precise rendition of the customized concept and the faithful expression of the contextual content.
-            In this paper, we exploit the nature of the diffusion model that handles different image content at varying denoising steps and model layers for fidelity–editability harmonization.
-            Our initial analysis reveals that contextual content has narrow and consistent trigger intervals, where skipping the injection of customized elements into the denoising model effectively restores editability and mitigates overfitting.
-            Leveraging the insights above, we propose Shrinking Injection of Customized Element (SInCE), a novel "subtractive" framework.
-            In the fine-tuning, SInCE encapsulates all customized elements into a plug-and-play module using an adversarial tuning strategy.
-            Besides, it modulates the trigger intervals of custom concept to better disentangle them from the intervals of contextual content.
-            At inference, customized information is injected into the denoising model only outside the trigger interval of contextual content. 
-            The disentanglement between the trigger intervals of customized and contextual content enables SInCE to effectively restore editability without degrading concept fidelity.
-            Extensive experiments validate the effectiveness of SInCE in harmonizing the fidelity–editability trade-off.
+            Tuning-free customized generation has gained popularity for its efficiency, particularly with the rise of rectified flow transformers. 
+            However, it often suffers from semantic inconsistency, degrading both concept fidelity and prompt alignment.
+            We attribute this failure to their tendency for inference-time superficial feature fusion, which is intrinsic to the tuning-free paradigm.
+            In this paper, we propose SemanticFlow for semantically consistent tuning-free customization, introducing explicit semantic control to jointly enhance concept fidelity and prompt alignment.
+            SemanticFlow operates through a cohesive "perceive-and-manipulate" mechanism for aligned fusion of visual and textual features at the early denoising stage.
+            Specifically, we first devise lightweight semantic token streams as run-time probes to accurately perceive the spatial responses of the target semantics.
+            We then formulate semantic manipulation as an energy-guided rectification of these semantic responses within the rectified flow framework, steering the generation process toward the desired outcome.
+            Experiments demonstrate that SemanticFlow jointly enhances concept fidelity and prompt alignment in previously challenging scenarios, effectively enabling semantically-consistent customization.
           </p>
         </div>
       </div>
@@ -156,24 +153,7 @@
           <tr>
             <td colspan="3">
               <p>
-                we propose Shrinking
-                Injection of Customized Element (SInCE), a novel subtractive
-                framework, to address the inherent fidelity–editability tradeoff
-                in customized generation. The core idea of SInCE is
-                to exploit the temporal and spatial disentanglement between
-                the trigger intervals of different image content. During finetuning,
-                SInCE encapsulates all customized elements into a
-                compact and plug-and-play module, enabling flexible control
-                over the selective injection of customized information at
-                inference. Besides, SInCE can modulate the trigger intervals
-                of customized concept at fine-tuning to better disentangle them
-                from the intervals of contextual content. At inference, SInCE
-                skips injecting customized information at the trigger interval
-                of contextual content to restore its normal expression, while
-                injecting customized information in the remaining intervals
-                is sufficient to trigger concept generation without degrading
-                fidelity. Therefore, SInCE can restore contextual content while
-                preserving high concept fidelity.
+                
               </p>
             </td>
           </tr>
@@ -181,9 +161,11 @@
               <img src="pics/method.png" alt="" width="1200" />
             <h2 class="subtitle has-text-left" style="font-size: 13px;">
               <p>
-              An overview of the proposed SINCE. In the fine-tuning stage, SINCE encapsulates all customized elements into a compact, 
-              plug-and-play module $\Phi_c$. SINCE can also modulate the custom trigger interval $T_c$ by adjusting the injection interval of $f_{fuse}$. 
-              At inference, customized information contained in $f_c$ is injected into $\epsilon_\theta$ only outside the contextual trigger interval $T_e$.
+              An overview of SemanticFlow.
+              The core idea of SemanticFlow is to perform spatially aware semantic manipulation for semantically-consistent customization.
+              The target semantic is specified by its textual description.
+              Lightweight semantic token streams are introduced as run-time probes to accurately capture the spatial distribution of target semantics. 
+              Semantic manipulation is then formulated as an energy-guided rectification of these responses within the rectified flow framework, enabling versatile enhancement.
               </p>
             </td>
           </tr>
@@ -212,9 +194,10 @@
             <td colspan="3" style="text-align: center; padding-bottom: 30px;">
               <img src="pics/res1.png" alt="" width="1000" />
               <h2 class="subtitle has-text-center" style="font-size: 15px; text-align: center;">
-                Visual comparison with optimization-based method. Each generation case contains one or more types of contextual content. Our method shows clear advantages over the baselines in
-                faithfully adhering to the prompt while preserving the key concept features. For instance, SInCE successfully changes the concept’s material without altering
-                its geometric structure.
+                Single-concept qualitative comparison.
+                 We compare SemnticFlow with competitive baselines. 
+                 Baselines struggle to generate images that are both faithful to the concept and consistent with the prompt.
+                 In contrast, our method faithfully generates all the desired content specified in the prompt while preserving the key identifying features of the customized concepts.
               </h2>
             </td>
           </tr>
@@ -225,8 +208,8 @@
               <img src="pics/res2.png" alt="" width="1000" style="display: block; margin: 0 auto;" />
               <!-- Ensure title is centered -->
               <h2 class="subtitle has-text-center" style="font-size: 15px; text-align: center;">
-                Visual comparison with finetuning-free methods. SInCE outperforms baselines in balancing the fidelity–editability trade-off, i.e., achieving strong
-                prompt adherence while preserving key concept features.
+                 Multi-concept qualitative comparison.
+                 Our method enables multi-concept enhancements such as proper attribute binding and fidelity improvement, generating semantically-consistent images that demonstrate both high concept fidelity and prompt adherence.
               </h2>
             </td>
           </tr>
@@ -236,13 +219,12 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{jin2026less,
-        title={Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation},
-        author={Jin, Jian and Shangbing, Gao and Fu, Zhenyong and Yang, Jian},
-        journal={IEEE Transactions on Multimedia},
-        pages={1--25},
-        year={2026}
-      }</code></pre>
+      <pre><code>@inproceedings{jin2026toward,
+      title={Toward semantically-consistent tuning-free customization for rectified flow transformers},
+      author={Jin, Jian and Zhang, Kai and Fu, Zhenyong and Yang, Jian},
+      booktitle=NeurIPS,
+      year={2026}
+    }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
